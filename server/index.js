@@ -11,9 +11,13 @@ connectDB();
 
 const app = express();
 
-// Specific CORS configuration to only allow the Netlify site
+// Allow both local development and production Netlify site
 app.use(cors({
-  origin: 'https://smart-helpdeskagent.netlify.app'
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://smart-helpdeskagent.netlify.app'
+  ]
 }));
 
 app.use(express.json()); // Middleware to parse JSON bodies
