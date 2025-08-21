@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors'); // Added cors import
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const kbRoutes = require('./routes/kbRoutes');
@@ -9,6 +10,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// Specific CORS configuration to only allow the Netlify site
+app.use(cors({
+  origin: 'https://smart-helpdeskagent.netlify.app'
+}));
+
 app.use(express.json()); // Middleware to parse JSON bodies
 
 app.get('/', (req, res) => {
