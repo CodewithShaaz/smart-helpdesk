@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import axios from 'axios';
 import './index.css';
 
 import Layout from './Layout.jsx'; // Import Layout
@@ -11,6 +12,9 @@ import TicketListPage from './pages/TicketListPage.jsx';
 import NewTicketPage from './pages/NewTicketPage.jsx'; 
 import TicketDetailPage from './pages/TicketDetailPage.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
+
+// Configure Axios Base URL
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
 const router = createBrowserRouter([
   {
